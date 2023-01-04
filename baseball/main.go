@@ -18,5 +18,4 @@ func main() {
 	ops := []any{5, 2, "D", "C", "+"}
 
 	baseball(ops)
-
 }
