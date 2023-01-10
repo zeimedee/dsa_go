@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Set struct {
 	integerMap map[int]bool
@@ -39,6 +41,16 @@ func (set *Set) Intersect(anotherSet *Set) *Set {
 	return intersectSet
 }
 
+func (set *Set) Union(anotherSet *Set) *Set {
+	var unionSet = &Set{}
+	unionSet.New()
+	var value int
+	for value, _ = range anotherSet.integerMap {
+		unionSet.AddElement(value)
+	}
+	return unionSet
+}
+
 func main() {
 
 	var set *Set
@@ -53,5 +65,14 @@ func main() {
 	fmt.Println(set)
 	set.AddElement(2)
 	fmt.Println(set.ContainsElement(1))
+
+	var anotherSet *Set
+	anotherSet = &Set{}
+	anotherSet.New()
+	anotherSet.AddElement(2)
+	anotherSet.AddElement(4)
+	anotherSet.AddElement(5)
+	fmt.Println("intersection: ", set.Intersect(anotherSet))
+	fmt.Println("union: ", set.Union(anotherSet))
 
 }
