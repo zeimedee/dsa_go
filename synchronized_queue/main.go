@@ -59,6 +59,14 @@ func (Queue *Queue) endPass() {
 
 func passenger(Queue *Queue) {
 	for {
+		fmt.Println("starting passenger queue")
+		time.Sleep(time.Second * 10)
+		Queue.startPass()
+
+		fmt.Println("passenger starts")
+		time.Sleep(time.Second * 2)
+		fmt.Println("passenger ends")
+		Queue.endPass()
 	}
 }
 
