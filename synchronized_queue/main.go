@@ -70,4 +70,18 @@ func passenger(Queue *Queue) {
 	}
 }
 
-func main() {}
+func main() {
+	var queue *Queue = &Queue{}
+	queue.New()
+	fmt.Println(queue)
+	var i int
+
+	for i = 0; i < 10; i++ {
+		// fmt.Println(i, "passenger in the queue")
+		go passenger(queue)
+	}
+
+	for j := 0; j < 5; j++ {
+		go ticketIssue(queue)
+	}
+}
